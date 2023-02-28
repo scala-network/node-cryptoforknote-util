@@ -494,6 +494,7 @@ namespace cryptonote
     offshore::pricing_record pricing_record;
     crypto::cycle cycle;
     crypto::cycle40 cycle40;
+    crypto::signature signature;
 
     BEGIN_SERIALIZE()
       VARINT_FIELD(major_version)
@@ -514,7 +515,9 @@ namespace cryptonote
       if (blob_type == BLOB_TYPE_CRYPTONOTE_XTNC || blob_type == BLOB_TYPE_CRYPTONOTE_CUCKOO) FIELD(cycle)
       if (blob_type == BLOB_TYPE_CRYPTONOTE_TUBE) FIELD(cycle40)
       if (blob_type == BLOB_TYPE_CRYPTONOTE_XHV) FIELD(pricing_record)
-
+      if(major_version >= 13) {
+        FIELD(signature)
+      }
     END_SERIALIZE()
   };
 
