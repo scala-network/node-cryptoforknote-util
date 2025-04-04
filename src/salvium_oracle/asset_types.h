@@ -29,9 +29,9 @@
 #include <string>
 #include <vector>
 
-namespace zephyr_oracle {
+namespace salvium_oracle {
 
-  const std::vector<std::string> ASSET_TYPES = {"ZEPH", "ZEPHUSD", "ZEPHRSV", "ZYIELD"};
+  const std::vector<std::string> ASSET_TYPES = {"SAL", "VSD", "BURN"};
 
   class asset_type_counts
   {
@@ -39,29 +39,25 @@ namespace zephyr_oracle {
     public:
 
       // Fields 
-      uint64_t ZEPH;
-      uint64_t ZEPHUSD;
-      uint64_t ZEPHRSV;
-      uint64_t ZYIELD;
+      uint64_t SAL;
+      uint64_t VSD;
+      uint64_t BURN;
 
       asset_type_counts() noexcept
-        : ZEPH(0)
-        , ZEPHUSD(0)
-        , ZEPHRSV(0)
-        , ZYIELD(0)
+        : SAL(0)
+        , VSD(0)
+        , BURN(0)
       {
       }
 
       uint64_t operator[](const std::string asset_type) const noexcept
       {
-        if (asset_type == "ZEPH") {
-          return ZEPH;
-        } else if (asset_type == "ZEPHUSD") {
-          return ZEPHUSD;
-        } else if (asset_type == "ZEPHRSV") {
-          return ZEPHRSV;
-        } else if (asset_type == "ZYIELD") {
-          return ZYIELD;
+        if (asset_type == "SAL") {
+          return SAL;
+        } else if (asset_type == "VSD") {
+          return VSD;
+        } else if (asset_type == "BURN") {
+          return BURN;
         }
 
         return 0;
@@ -69,14 +65,12 @@ namespace zephyr_oracle {
 
       void add(const std::string asset_type, const uint64_t val)
       {
-        if (asset_type == "ZEPH") {
-          ZEPH += val;
-        } else if (asset_type == "ZEPHUSD") {
-          ZEPHUSD += val;
-        } else if (asset_type == "ZEPHRSV") {
-          ZEPHRSV += val;
-        } else if (asset_type == "ZYIELD") {
-          ZYIELD += val;
+        if (asset_type == "SAL") {
+          SAL += val;
+        } else if (asset_type == "VSD") {
+          VSD += val;
+        } else if (asset_type == "BURN") {
+          BURN += val;
         }
       }
   };
